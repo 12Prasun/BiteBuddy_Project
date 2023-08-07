@@ -28,14 +28,11 @@ if(process.env.NODE_ENV === "production")
 })
 }
 else{
-  app.get("/", (req, res) => {
-  res.send("API is running successfully");
-    
+  app.get('/', (req, res) => {
+  res.send('Hello World!')
 });
 }
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
