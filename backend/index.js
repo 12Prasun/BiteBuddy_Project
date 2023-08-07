@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 5000
 const mongoDB = require("./db")
+const path=require("path");
 
 app.use((req,res,next)=>{
 res.setHeader("Access-Control-Allow-Origin","http://localhost:3000");
@@ -18,10 +19,10 @@ app.use('/api', require("./Routes/OrderData"));
 const __dirname1=path.resolve();
 if(process.env.NODE_ENV === "production")
 {
-  app.use(express.static(path.join(__dirname1,"/frontend/build")));
+  app.use(express.static(path.join(__dirname1,"/build")));
 
   app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(__dirname1,"frontend","build","index.html"));
+    res.sendFile(path.resolve(__dirname1,"build","index.html"));
 })
 }
 else{
